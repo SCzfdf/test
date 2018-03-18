@@ -1,0 +1,151 @@
+<script>
+    var showData = function (data) {
+        var show = document.getElementById("show");
+        var DETAIL_PREFIX = "/view/data/resume.html";
+
+//    var DETAILS_URL = "/view/data/"
+        var row = document.createElement("div");
+        row.classList.add("row");
+        row.classList.add("show-box5_2");
+        row.setAttribute("style","display: none;");
+        var c1 = document.createElement("div");
+        c1.classList.add("col-xs-12");
+        c1.classList.add("col-sm-2");
+        c1.classList.add("col-md-2");
+        c1.classList.add("show5_2-head");
+        var c2 = document.createElement("div");
+        c2.classList.add("col-xs-12");
+        c2.classList.add("col-sm-3");
+        c2.classList.add("col-md-3");
+        c2.classList.add("show5_2-context");
+        var c3 = document.createElement("div");
+        c3.classList.add("col-xs-12");
+        c3.classList.add("col-sm-2");
+        c3.classList.add("col-md-2");
+        c3.classList.add("show5_2-x");
+        var c4 = document.createElement("div");
+        c4.classList.add("hidden-xs");
+        c4.classList.add("col-sm-2");
+        c4.classList.add("col-md-2");
+        c4.classList.add("show5_2-x");
+
+        var a = document.createElement("a");
+        var p = document.createElement("p");
+        var span = document.createElement("span");
+
+        var h1 = document.createElement("h1");
+        h1.innerHTML = data.name;
+
+        var context_span1 = span.cloneNode(true);
+        var context_span2 = span.cloneNode(true);
+        var context_span3 = span.cloneNode(true);
+        var context_span4 = span.cloneNode(true);
+        context_span1.innerHTML = (data.sex ? "男" : "女") + "&nbsp; |";
+        context_span2.innerHTML = data.age + "&nbsp; |";
+        context_span3.innerHTML = data.experience + "&nbsp; |";
+        context_span4.innerHTML = educationToString(data.education);
+
+        var context_treatment = p.cloneNode(true);
+        context_treatment.innerHTML = data.job_treatment;
+
+        var context_a1= a.cloneNode(true);
+        var context_a2= a.cloneNode(true);
+        context_a1.innerHTML = "期望职位："+data.job_intention;
+        context_a2.innerHTML = "期望地点："+data.job_area;
+        context_a2.setAttribute("class","hidden-xs");
+
+        var button = document.createElement("button");
+        button.setAttribute("onclick","window.open('" + DETAIL_PREFIX+"?d="+data.id+
+            "')");
+        button.innerHTML = "查看简历";
+
+
+        var Nc1 = c1.cloneNode(true);
+        var Nc2 = c2.cloneNode(true);
+        var Nc3 = c4.cloneNode(true);
+        var Nc4 = c3.cloneNode(true);
+        var Nc5 = c4.cloneNode(true);
+
+        Nc1.append(h1);
+
+        var context_p2 = p.cloneNode(true);
+        context_p2.append(context_span1);
+        context_p2.append(context_span2);
+        context_p2.append(context_span3);
+        context_p2.append(context_span4);
+        Nc2.append(context_p2);
+
+        Nc3.append(context_treatment);
+
+        Nc4.append(context_a1);
+        Nc4.append(context_a2);
+
+        Nc5.append(button);
+
+        var Nrow = row.cloneNode(true);
+        Nrow.append(Nc1);
+        Nrow.append(Nc2);
+        Nrow.append(Nc3);
+        Nrow.append(Nc4);
+        Nrow.append(Nc5);
+
+//        var href = document.createElement("a");
+//        href.append(Nrow)
+        show.append(Nrow);
+        show.appendChild(document.createElement("hr"));
+    };
+
+    var educationToString= function (education) {
+        if(education == "0") return "无";
+        if(education == "1") return "高中";
+        if(education == "2") return "大专";
+        if(education == "3") return "本科";
+        if(education == "4") return "本科以上";
+    }
+</script>
+
+<div class="row">
+    <div class="hidden-xs col-sm-2 col-md-2">
+        <a data-category="5" class="details-header">店家招聘</a>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <ul class="details-ul">
+            <li><a data-type="1" class="details-a-Nclick">本地招聘信息</a></li>
+            <li><a data-type="2" class="details-a-click">本地求职信息</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="hidden-xs">
+        <hr class="hr1" style="padding-top: 10px">
+    </div>
+</div>
+
+<div id="show">
+    <!--<hr>-->
+    <!--<div class="row show-box5_2">-->
+        <!--<div class="col-xs-12 col-sm-2 col-md-2 show5_2-head">-->
+            <!--<h1>吴小姐</h1>-->
+        <!--</div>-->
+        <!--<div class="col-xs-12 col-sm-3 col-md-3 show5_2-context">-->
+            <!--<p>-->
+                <!--<span>女 &nbsp;|</span>-->
+                <!--<span>23岁&nbsp;|</span>-->
+                <!--<span>3年以上&nbsp;|</span>-->
+                <!--<span>本科</span>-->
+            <!--</p>-->
+        <!--</div>-->
+        <!--<div class="hidden-xs col-sm-2 col-md-2 show5_2-x">-->
+            <!--<p>3000-5000元</p>-->
+        <!--</div>-->
+        <!--<div class="col-xs-12 col-sm-2 col-md-2 show5_2-x">-->
+            <!--<a>期望职位:美甲师</a>-->
+            <!--<a class="hidden-xs">期望地点:白云</a>-->
+        <!--</div>-->
+        <!--<div class="hidden-xs col-sm-2 col-md-2 show5_2-x">-->
+            <!--<button onclick='window.open("http://www.baidu.com")'>下载简历</button>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<hr>-->
+</div>

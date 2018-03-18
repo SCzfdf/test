@@ -1,0 +1,247 @@
+@charset "utf-8";
+body{
+	background-color:#ccc;
+}
+#wrap{
+	width:10rem;
+	margin:0 auto;
+	/*background-color: pink;*/
+}
+#wrap a{
+	width:100%;
+	height:100%;
+}
+   /***  头部的内容****/
+#header{
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:30;
+	width:100%;
+	height:.3rem;
+	box-sizing:border-box;
+	
+}
+#header .h-search{
+	height:.9rem;
+	line-height:.9rem;
+	text-align:center;
+	background-color: #f3f3f3;
+}
+#header .h-search span{
+	color:#ff0000;
+	font-size:.6rem;
+}
+/****主体部分***/
+#content{
+	width:100%;
+	padding-top:.8rem;
+}
+#content .c-banner{
+	width:10rem;
+	height:5rem;
+}
+.c-banner img{
+	width:10rem;
+	height:5rem;
+}
+
+/**头条***/
+/*.c-headline{
+	height:.9rem;
+	padding:.1rem 0;
+	border-top:1px solid #ccc;
+	background-color:white;
+}
+.c-headline p{
+	width:2.18rem;
+	height:100%;
+	background:url("../images/") center/80% no-repeat;
+}
+.c-headline  em{
+	width:.7rem;
+	height:.5rem;
+	margin:.2rem;
+	text-align:center;
+	line-height:.5rem;
+	border:1px solid red;
+	border-radius:5px;
+}
+.c-headline span{
+	line-height:.9rem;
+	font-size:.29rem;
+}*/
+/*美帮来服务的内容  1,是财富分享*/
+.c-tbuy{
+	width:10rem;
+	height: 63.2rem;
+	background-color: #e9e6ec;
+}
+.c-tbuy p{
+	font-size:.36rem;		/* 内容的字号大小 */
+	width:8.8rem;
+	line-height:.5rem;
+	text-indent:1em;
+	padding:.15rem;
+	color:#100;
+}
+.c-tbuy .c-tb-recommend{
+	position:relative;
+	width:10rem;
+	height:16.5rem;
+	padding-left:.16rem;
+	padding-top:.4rem;
+	border:.12rem solid;
+	border-style:solid;
+	border-width:.15rem;
+	border-color: #ccc #6699ff;
+	box-sizing:border-box;
+/* 	background:url("../images/back.jpg") left/100% 13rem no-repeat; */
+}
+.c-tbuy .c-tb-recommend h3{
+	font-size:.50rem;          /* 标题的字号大小 */
+	line-height:.38rem;
+	text-align:left;
+	padding:.15rem;
+}
+.c-tb-recommend p{
+	font-size:.36rem;
+}
+/* .c-tbuy .c-tb-recommend img{
+	position:absolute;
+	left:1rem;
+	top:2.2rem;
+	text-align:center;
+	width:8rem;
+	height:8rem;
+} */
+/*美帮来服务的内容  2,是服务*/
+.c-tbuy .d-tb-recommend{
+	position:relative;
+	width:10rem;
+	height:12rem;
+	padding-left:.26rem;
+	padding-top:.5rem;
+	border-style:solid;
+	border-width:.15rem .15rem;
+	border-color:#6666cc #6699cc;
+	box-sizing:border-box;
+ /*	background:url("../images/back.jpg") top/100% 11.5rem no-repeat; */
+}
+.c-tbuy .d-tb-recommend h3{
+	font-size:.50rem;
+	line-height:.38rem;
+	text-align:left;
+	padding:.15rem .15rem;
+}
+.d-tb-recommend p{
+	font-size:.36rem;
+}
+.c-tbuy .d-tb-recommend img{
+	position:absolute;
+	left:.5rem;
+	top:2.5rem;
+	text-align:center;
+	width:8.3rem;
+	height:8.5rem;
+}
+/*美帮来APP下载  3,是APP下载或公众号关注*/
+.c-tbuy .e-tb-recommend{
+	position:relative;
+	width:10rem;
+	height:13rem;
+	padding-left:.2rem;
+	padding-top:.5rem;
+	border-style:solid;
+	border-width: .15rem .15rem;
+	border-color:#ccc #6699cc;
+	box-sizing:border-box;
+ 	/*background:url("../images/back.jpg") top/100% 11.8rem no-repeat; */
+}
+.c-tbuy .e-tb-recommend h3{
+	font-size:.50rem;
+	line-height:.38rem;
+	text-align:left;
+	padding:.01rem .15rem;
+}
+.e-tb-recommend p{
+	font-size:.36rem;
+}
+.c-tbuy .e-tb-recommend img{
+	position:absolute;
+	left:.5rem;
+	top:2.3rem;
+	text-align:center;
+	width:8.3rem;
+	height:9.6rem;
+}
+.c-tbuy .code-div{
+	position:relative;
+	width:10rem;
+	padding-left:.3rem;
+	padding-top:.3rem;
+	box-sizing:border-box;
+}
+.code-div .code-left{
+	margin:.2rem .1rem;
+	display:inline-block;
+	float:left;
+}
+.code-div .code-right{
+	margin:.2rem .1rem;
+	display:inline-block;
+	float:right;
+}
+.code-div img{
+	width: 3rem;
+}
+.code-div p.code-text{
+	width:4rem;
+	margin-left:-.7rem;
+	line-height: 1rem;
+	font-size: .4rem;
+} 
+/***     end ***/
+/*美帮来内容  4、企业简介*/
+.c-tbuy .f-tb-recommend{
+	position:relative;
+	width:10rem;
+	height:17rem;
+	padding-left:.2rem;
+	padding-top:.3rem;
+	border-style:solid;
+	border-width: .15rem .15rem;
+	border-color:#6699ff #6699cc;
+	box-sizing:border-box;
+ 	/*background:url("../images/back.jpg") left/100% 17rem no-repeat; */
+}
+.c-tbuy .f-tb-recommend h3{
+	font-size:.50rem;
+	line-height:.38rem;
+	text-align:left;
+	padding:.15rem .15rem;
+}
+.f-tb-recommend p{
+	font-size:.36rem;
+}
+
+/*底部栏*/
+#footer{
+	width:9.5rem;
+	padding-left:.1rem;
+	text-align:center;
+	/*background-color:#d2bfc6;*/
+}
+#footer.f-contact_down{
+	display:none;
+	box-sizing:border-box;
+}
+.f-contact_down p{
+	font-size:.3rem;
+	height:.3rem;
+	line-height:.5rem;
+	margin: .3rem;
+	color:#000;
+	text-align:center;
+	float:left;
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wfly.dao.RoleDao">
+
+	<resultMap id="PermissionMap" type="com.wfly.model.Permission">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="isDelete" property="isDelete" jdbcType="BIT" />
+		<result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<insert id="insertUseRoleOnId">
+		INSERT INTO
+		user_role(user_id,role_id)
+		value (#{userId, jdbcType=INTEGER},#{roleId, jdbcType=INTEGER});
+	</insert>
+
+	<select id="selectRoleByUserId"  resultMap="PermissionMap">
+		SELECT
+		role_id FROM user_role WHERE user_id = #{userId, jdbcType=VARCHAR}
+	</select>
+</mapper>

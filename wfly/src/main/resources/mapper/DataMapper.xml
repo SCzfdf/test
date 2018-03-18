@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wfly.dao.DataDao">
+
+	<select id="selectDataCount" resultType="Integer">
+		select COUNT(*)
+		from 
+		<if test="category==1">
+			<if test="type==0">
+			mbl_mbhbrands
+			where type LIKE '%'
+			</if>
+			<if test="type!=0">
+			mbl_mbhbrands
+			where type LIKE CONCAT('%',#{type},'%') 
+			</if>
+		</if>
+		<if test="category==2">mbl_school</if>
+		<if test="category==3">
+			<if test="type==2">mbl_foreignexhibition</if>
+			<if test="type==3">mbl_mbhcampany</if>
+		</if>
+		<if test="category==5">
+			<if test="type==0">mbl_invitation</if>
+			<if test="type==1">mbl_invitation</if>
+			<if test="type==2">mbl_resume</if>
+		</if>
+		<if test="category==6">mbl_shoptransfer</if>
+		<if test="category==8">
+			<if test="type==0">mbl_company</if>
+			<if test="type==1">mbl_company</if>
+			<if test="type==2">mbl_decoratecompany</if>
+			<if test="type==3">mbl_advertising</if>
+			<if test="type==4">mbl_packmaterials</if>
+		</if>
+	</select>
+	<select id="selectDataCountLogistics" resultType="Integer">
+		select COUNT(*)
+		from mbl_logistics
+		where
+			start_site like CONCAT('%',#{start},'%') 
+		and
+			end_site like CONCAT('%',#{end},'%')
+	</select>
+	<select id="selectInformationCount" resultType="Integer">
+		select COUNT(*)
+		from mbl_information
+		where type=#{dl.type}
+	</select>
+	
+	<!-- ========================列表======================== -->
+	<select id="selectInvitationByTnN" resultType="com.wfly.model.Invitation">
+		SELECT * 
+		FROM mbl_invitation 
+		limit #{num},10
+	</select>
+	<select id="selectCompanysByTnN" resultType="com.wfly.model.Company">
+		select *
+		from mbl_company
+		limit #{num},10
+	</select>
+	<select id="selectResumeByNum" resultType="com.wfly.model.Resume">
+		SELECT * 
+		FROM mbl_resume 
+		limit #{num},10
+	</select>
+	<select id="selectMbhCompanysByNum" resultType="com.wfly.model.Mbh_Company">
+		select *
+		from 
+			mbl_mbhcampany
+		limit 
+			#{num},10
+	</select>
+	<select id="selectSchoolsByNum" resultType="com.wfly.model.School">
+		select *
+		from 
+			mbl_school
+		limit 
+			#{num},10
+	</select>
+	<select id="selectMbhBrandByNum" resultType="com.wfly.model.Mbh_Brand">
+		select *
+		from 
+			mbl_mbhbrands
+		where
+			type like CONCAT('%',#{dl.type},'%') 
+		limit 
+			#{dl.num},10
+	</select>
+	<select id="seleceDataListLogistics" resultType="com.wfly.model.Logistics">
+		select *
+		from 
+			mbl_logistics
+		where
+			start_site like CONCAT('%',#{start},'%') 
+		and
+			end_site like CONCAT('%',#{end},'%')
+		limit 
+			#{num},10
+	</select>
+	<select id="selectDecorateCompanyByNum" resultType="com.wfly.model.DecorateCompany">
+		select *
+		from 
+			mbl_decoratecompany
+		limit 
+			#{dl.num},10
+	</select>
+	<select id="selectAdvertisingByNum" resultType="com.wfly.model.Advertising">
+		select *
+		from 
+			mbl_advertising
+		limit 
+			#{dl.num},10
+	</select>
+	<select id="selectPackMaterialsByNum" resultType="com.wfly.model.PackMaterials">
+		select *
+		from 
+			mbl_packmaterials
+		limit 
+			#{dl.num},10
+	</select>
+	<select id="selectShoptransferByNum" resultType="com.wfly.model.Shoptransfer">
+		select *
+		from 
+			mbl_shoptransfer
+		limit 
+			#{dl.num},10
+	</select>
+	<select id="selectForeignExhibitionByNum" resultType="com.wfly.model.ForeignExhibition">
+		select *
+		from 
+			mbl_foreignexhibition
+		limit 
+			#{dl.num},10
+	</select>
+	<select id="selectInformationList" resultType="com.wfly.model.Information">
+		select *
+		from 
+			mbl_information
+		where
+			type=#{dl.type}
+		limit 
+			#{dl.num},60
+	</select>
+	<!-- ==================================================== -->
+	
+
+	<!-- <select id="selectCompanyCountByType" resultType="INTEGER">
+		select COUNT(*)
+		from 
+		<if test="category==1">
+			mbl_company
+			WHERE type = #{type}
+		</if>
+		<if test="category==5">mbl_invitation</if>
+	</select> -->
+	<!-- ========================详情======================== -->
+	<select id="selectCompanyById" resultType="com.wfly.model.Company">
+		select * 
+		from mbl_company
+		WHERE id = #{dataId}
+	</select>
+	<select id="selectInvitationById" resultType="com.wfly.model.Invitation">
+		select * 
+		from mbl_invitation
+		WHERE id = #{dataId}
+	</select>
+	<select id="selectResumeById" resultType="com.wfly.model.Resume">
+		select * 
+		from mbl_resume
+		WHERE id = #{dataId}
+	</select>
+	<select id="selectMbhCompanyById" resultType="com.wfly.model.Mbh_Company">
+		select * 
+		from mbl_mblcampany
+		WHERE id = #{dataId}
+	</select>
+	<select id="selectSchoolById" resultType="com.wfly.model.School">
+		select * 
+		from mbl_school
+		WHERE id = #{dataId}
+	</select>
+	<select id="selectMbhBrandById" resultType="com.wfly.model.Mbh_Brand">
+		select * 
+		from mbl_mbhbrands
+		WHERE id = #{dataId}
+	</select>
+	<select id="selectDecorateCompanyById" resultType="com.wfly.model.Mbh_Brand">
+		select * 
+		from mbl_decoratecompany
+		WHERE id = #{dataId}
+	</select>
+	<select id="selectAdvertisingById" resultType="com.wfly.model.Mbh_Brand">
+		select * 
+		from mbl_advertising
+		WHERE id = #{dataId}
+	</select>
+	<select id="selectPackMaterialsById" resultType="com.wfly.model.PackMaterials">
+		select * 
+		from mbl_packmaterials
+		WHERE id = #{dataId}
+	</select>
+	<select id="selectShoptransferById" resultType="com.wfly.model.Shoptransfer">
+		select * 
+		from mbl_shoptransfer
+		WHERE id = #{dataId}
+	</select>
+	<select id="selectForeignExhibitionById" resultType="com.wfly.model.ForeignExhibition">
+		select * 
+		from mbl_foreignexhibition
+		WHERE id = #{dataId}
+	</select>
+	<!-- ==================================================== -->
+	
+	<!-- 快递网点=============================================== -->
+	<select id="selectDataCountExpressage" resultType="Integer">
+		SELECT COUNT(*)
+		FROM mbl_expressage
+		WHERE
+			<if test=" !''.equals(county) ">
+			county_id = IFNULL(
+				(SELECT county_id
+				FROM county_type
+				WHERE county_name LIKE CONCAT('%',#{county},'%')
+				LIMIT 1 ),0)
+			</if>
+			<if test=" !''.equals(town)">
+			town_id = IFNULL(
+				(SELECT town_id
+				FROM town_type
+				WHERE town_name LIKE CONCAT('%',#{town},'%')
+				LIMIT 1 ),0)
+			</if>
+	</select>
+	<select id="seleceDataListExpressage" resultType="com.wfly.model.Expressage">
+		SELECT *
+		FROM mbl_expressage
+		WHERE
+			<if test=" !''.equals(county) ">
+			county_id = IFNULL(
+				(SELECT county_id
+				FROM county_type
+				WHERE county_name LIKE CONCAT('%',#{county},'%')
+				LIMIT 1 ),0)
+			</if>
+			<if test=" !''.equals(town)">
+			town_id = IFNULL(
+				(SELECT town_id
+				FROM town_type
+				WHERE town_name LIKE CONCAT('%',#{town},'%')
+				LIMIT 1 ),0)
+			</if>
+		limit #{num},10
+	</select>
+	<!-- ==================================================== -->
+</mapper>

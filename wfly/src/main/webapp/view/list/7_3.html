@@ -1,0 +1,236 @@
+<script src="/js/public/area.js"></script>
+<script>
+    $(document).ready(function () {
+        var page = document.getElementById("page");
+        if (page!=null) page.innerHTML = "";
+        _init_area("s_province","s_city","s_county");
+        button_none_click_seleData();
+        a_details_click_showList();
+    });
+
+    button_none_click_seleData = function (num) {
+        document.getElementById("search").onclick = function () {
+            var s_county = document.getElementById("s_county").value;
+            var s_town = document.getElementById("s_town").value;
+            if ( s_county == "市、县级市"  && s_town == "" ){
+                alert("请输入或选择寄收地点");
+            }else {
+                if ( s_county == "市、县级市" ) s_county = "";
+                $.ajax({
+                    url: "/data/dataListExpressage.do",
+                    type:"post",
+                    data: {"county":s_county,
+                        "town":s_town,
+                        "num":1
+                    },
+                    success: function (data) {
+                        if(data.code == 200) {
+                            ppaging(
+                                document.getElementById("page"),
+                                1,
+                                data.totalPage,
+                                data.totalSize
+                            );
+                            document.getElementById("show").innerHTML = "";//清空
+                            for (var i = 0; i < data.data.length; i++) {
+                                var d = data.data[i];
+                                showData(d);
+
+                                var show = document.getElementById("show").children;
+                                $(show[show.length-2]).fadeOut(0);
+                                $(show[show.length-2]).fadeIn(i*250);//渐显
+                            }
+                        }else{
+                            document.getElementById("show").innerHTML = "";//清空
+                            var page = document.getElementById("page");
+                            if(page != null)
+                                page.innerHTML = "";
+                        }
+                        a_Page_ready_bindHear_box7();
+                    }
+                })
+            }
+        }
+    };
+
+    a_Page_ready_bindHear_box7 = function () {
+        var as = document.getElementById("page").children;
+        var z=0;
+        for (; z<as.length; ){
+            a = as[z];
+            z = z+1;
+            a.href="javascript:scroll(0,0)";
+            a.onclick = function (e){
+                t = e.target.title;
+                var s_county = document.getElementById("s_county").value;
+                var s_town = document.getElementById("s_town").value;
+                $.ajax({
+                    url: "/data/dataListExpressage.do",
+                    type:"post",
+                    data: {"county":s_county,
+                        "town":s_town,
+                        "num":t
+                    },
+                    success: function (data) {
+                        if(data.code == 200) {
+                            ppaging(
+                                document.getElementById("page"),
+                                t,
+                                data.totalPage,
+                                data.totalSize
+                            );
+                            document.getElementById("show").innerHTML = "";//清空
+                            for (var i = 0; i < data.data.length; i++) {
+                                var d = data.data[i];
+                                showData(d);
+
+                                var show = document.getElementById("show").children;
+                                //XXX: 这段代码有毒 有时可以有时不可以...不敢改了,js真是神奇的语言
+                                $(show[show.length-2]).fadeIn(0);
+                                $(show[show.length-2]).fadeOut(1);
+                                $(show[show.length-2]).fadeIn(i*250);//渐显
+                            }
+                        }else{
+                            document.getElementById("show").innerHTML = "";//清空
+                            var page = document.getElementById("page");
+                            if(page != null)
+                                page.innerHTML = "";
+                        }
+                        a_Page_ready_bindHear_box7();
+                    }
+                });
+                a_details_click_showList();
+            };
+        }
+    }
+</script>
+<script>
+
+    var IMAGE_URL = "/image/logistics/";
+    var DEFAULT_IMAGE = IMAGE_URL+"default.png";
+    var c1 = document.createElement("div");
+    c1.classList.add("hidden-xs");
+    c1.classList.add("col-sm-2");
+    c1.classList.add("col-md-2");
+    c1.classList.add("box7-img");
+    var c2 = document.createElement("div");
+    c2.classList.add("col-xs-12");
+    c2.classList.add("col-sm-8");
+    c2.classList.add("col-md-8");
+    c2.classList.add("box7-context");
+    var p = document.createElement("p");
+    var img = document.createElement("img");
+    var span = document.createElement("span");
+    var hr = document.createElement("hr");
+
+    var showData = function (data) {
+        var a = document.createElement("a");
+
+        hr.classList.add("box7-hr");
+
+
+        var img1 = img.cloneNode(true);
+        img1.setAttribute("src", DEFAULT_IMAGE );
+
+        var p1 = p.cloneNode(true);
+        var a1 = a.cloneNode(true);
+        a1.innerHTML = data.ourier_name;
+        p1.innerHTML = "公司名称：";
+        p1.append(a1);
+        console.log(p1.innerHTML);
+        var p2 = p.cloneNode(true);
+        p2.innerHTML = "网点名称："+data.branches_name;
+        var p3 = p.cloneNode(true);
+        p3.innerHTML = "网点联系人："+data.working_people_name;
+        var p4 = p.cloneNode(true);
+        p4.innerHTML = "网点联系人电话："+data.working_tellphone;
+        if(data.working_qq != ""){
+            var span1 = span.cloneNode(true);
+            span1.innerHTML = "　　　QQ："+data.ourier_name;
+        }
+        if(data.working_fax != ""){
+            var span2 = span.cloneNode(true);
+            span2.innerHTML = "　　　传真："+data.working_fax;
+        }
+        var p5 = p.cloneNode(true);
+        p5.innerHTML  = "快递网点联系方式："+data.working_mobile;
+        var p6 = p.cloneNode(true);
+        p6.innerHTML = "配送区域："+data.yes_working_area;
+        var p7 = p.cloneNode(true);
+        p7.innerHTML = "不配送区域：";
+        var a2 = a.cloneNode(true);
+        a2.innerHTML = data.no_working_area;
+        p7.append(a2);
+        var span1 = span.cloneNode(true);
+        span1.innerHTML = "最后更新时间："+data.last_modify_time;
+        p7.append(span1);
+
+
+        var Nc1 = c1.cloneNode(true);
+        var Nc2 = c2.cloneNode(true);
+        var Nrow = document.createElement("div");
+        Nrow.setAttribute("style","display: none;");
+        Nrow.classList.add("row");
+
+        Nc1.append(img1);
+
+        Nc2.append(p1);
+        Nc2.append(p2);
+        Nc2.append(p3);
+        Nc2.append(p4);
+        Nc2.append(p5);
+        Nc2.append(p6);
+        Nc2.append(p7);
+
+        Nrow.append(Nc1);
+        Nrow.append(Nc2);
+
+        var hr1 = hr.cloneNode(true);
+        var show = document.getElementById("show");
+        show.append(Nrow);
+        show.append(hr1)
+    };
+
+</script>
+
+<div class="row">
+    <div class="hidden-xs col-sm-2 col-md-2">
+        <a data-category="7" class="details-header">物流快递</a>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <ul class="details-ul">
+            <li><a  data-type="1" class="details-a-Nclick">全国物流</a></li>
+            <li><a  data-type="2" class="details-a-Nclick">快递查询</a></li>
+            <li><a  data-type="3" class="details-a-click">网点查询</a></li>
+        </ul>
+    </div>
+</div>
+<div class="hidden-xs">
+    <hr class="hr1"/>
+</div>
+
+<div class="select-area">
+    <div class="area">
+        <select id="s_province" name="s_province"></select>  
+        <select id="s_city" name="s_city" ></select>  
+        <select id="s_county" name="s_county"></select>
+        <input type="text" id="s_town" placeholder="乡/镇  如:玉溪镇" />
+        <button type="button" id="search">搜索</button>
+    </div>
+</div>
+<div id="show">
+    <!--<div class="row">-->
+    <!--<div class="hidden-xs col-sm-2 col-md-2 box7-img">-->
+    <!--<img src="/image/school/M2E1NTA5MGQyNjQzMjEzMmY0MDI0.jpg">-->
+    <!--</div>-->
+    <!--<div class="col-xs-12 col-sm-8 col-md-8 box7-context">-->
+    <!--<p>公司名称：<a>广州松正物流</a></p>-->
+    <!--<p>地址：广州市白云区石井镇庆丰物流市场北一区225-226档</p>-->
+    <!--<p>联系人：袁先生</p>-->
+    <!--<p>手机：18241956231</p>-->
+    <!--<p>发货热线：13512781299</p>-->
+    <!--<p>货运市场：庆丰物流 <span>2018.02.03</span></p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<hr>-->
+</div>

@@ -1,0 +1,175 @@
+/*顶部*/
+header {
+    /*盒子 居中*/
+    max-width: 1280px;
+    height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.4rem;
+}
+header .logo{
+    float: left;
+    height: 5.5rem;
+    width: 15rem;
+}
+header .logo > img {
+    height: 100%;
+    width: 100%;
+}
+
+header .welcome_text {
+    float: left;
+    height: 6rem;
+    width: auto;
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+header .welcome_text > span {
+    line-height: 4rem;
+    font-size: 2rem;
+}
+header .fqa {
+    float: right;
+    padding-top: 4rem;
+}
+header .fqa > img{
+    height: 1.2rem;
+    width: 1.2rem;
+}
+header .fqa > a{
+    color: #db047a;
+}
+
+hr{
+    border: 0;
+    border-bottom: 2px solid #d7d7d7;
+}
+
+section{
+    /*盒子 居中*/
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.register_context{
+    width: 429px;
+    height: 579px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+.top_text{
+    width: 100%;
+    height: auto;
+    padding-top: 1.7rem;
+    padding-bottom: 2.7rem;
+}
+.top_text_left{
+    float: left;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.top_text_rigth{
+    float: right;
+}
+.form{
+    width: 610px;
+}
+.form > input{
+    color: #6e6e6e;
+    width: 68%;
+    height: 2.7rem;
+    margin-bottom: 2rem;
+}
+#u{
+    background-image:url(../image/setPhone.png);
+    background-repeat: no-repeat;
+    padding-left: 5.5rem;
+    border: 1px solid rgb(165, 165, 167);
+}
+#p1{
+    background-image:url(../image/setPass.png);
+    background-repeat: no-repeat;
+    padding-left: 5.5rem;
+    border: 1px solid rgb(165, 165, 167);
+}
+#p2{
+    background-image:url(../image/setPass.png);
+    background-repeat: no-repeat;
+    padding-left: 5.5rem;
+    border: 1px solid rgb(165, 165, 167);
+}
+#yanzheng{
+    background-image:url(../image/setYanz.png);
+    background-repeat: no-repeat;
+    padding-left: 5.5rem;
+    border: 1px solid rgb(165, 165, 167);
+    width: 40%;
+    float: left;
+}
+
+#form_img{
+    width: 27%;
+    height: 2.7rem;
+    float: left;
+    margin-left: 5px;
+}
+.checkbox{
+    padding-top: 1rem;
+    float: left;
+}
+.button{
+    margin-top: 1rem;
+    text-align: center;
+    height: 2.7rem;
+    font-size: 1.2rem;
+    line-height: 2.7rem;
+    float: left;
+    width: 100%;
+    /*background-color: #db047a;*/
+    background: -ms-linear-gradient(top, #db047a,  #b40461);
+    background:-moz-linear-gradient(top,#db047a, #b40461);/*火狐*/
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#db047a), to(#b40461));      /* Safari 4-5, Chrome 1-9*/
+    background: -webkit-linear-gradient(top, #db047a, #b40461);   /*Safari5.1 Chrome 10+*/
+    background: -o-linear-gradient(top, #db047a, #b40461);  /*Opera 11.10+*/
+    color: #FFFFFF;
+    box-shadow: 1px 1px 1px 0px #c5c5c5;
+}
+.button > a{
+	color: #FFFFFF;
+	width: 100%;
+	display:block;
+}
+
+.register_tips_hidden{
+    width: 180px; height: 43px; float: right; line-height: 43px;
+    padding-left: 15px;
+    opacity:0;
+    color: #FFFFFF;
+}
+.register_tips {
+    width: 180px; height: 43px;  float: right; line-height: 43px;overflow:hidden;;
+    color: red;
+    padding-left: 0px;
+    transition: all 1s ease 0s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

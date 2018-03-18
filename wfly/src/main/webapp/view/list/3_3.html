@@ -1,0 +1,114 @@
+<script>
+    $(document).ready(function () {
+        a_details_click_showList();
+        ajaxTest(1);
+    });
+</script>
+<script>
+    //    var DETAILS_URL = "/view/data/"
+    var show = document.getElementById("show");
+    var row = document.createElement("div");
+    row.classList.add("row");
+    row.classList.add("show-box3");
+    row.setAttribute("style","display: none;");
+    var c1 = document.createElement("div");
+    c1.classList.add("col-xs-6");
+    c1.classList.add("col-sm-4");
+    c1.classList.add("col-md-4");
+    c1.classList.add("show3-head");
+    var c2 = document.createElement("div");
+    c2.classList.add("col-xs-6");
+    c2.classList.add("col-sm-3");
+    c2.classList.add("col-md-3");
+    c2.classList.add("show3-context");
+    var c3 = document.createElement("div");
+    c3.classList.add("hidden-xs");
+    c3.classList.add("col-sm-2");
+    c3.classList.add("col-md-2");
+    c3.classList.add("show3-x");
+
+    var p = document.createElement("p");
+    var span = document.createElement("span");
+    var h1 = document.createElement("h1");
+    h1.setAttribute("style","margin-top: 0px;");
+
+    var showData = function (data) {
+        h1_1 = h1.cloneNode(true);
+        h1_1.innerHTML = data.company_name;
+        var head_p = p.cloneNode(true);
+        head_p.innerHTML = data.address;
+
+        var context_p1 = p.cloneNode(true);
+        context_p1.innerHTML = data.email;
+
+        var context_address = p.cloneNode(true);
+        context_address.innerHTML = data.time;
+
+        var context_update = p.cloneNode(true);
+        context_update.innerHTML = data.area+"&nbsp;&nbsp;"+data.site;
+
+        var Nc1 = c1.cloneNode(true);
+        var Nc2 = c2.cloneNode(true);
+        var Nc3 = c3.cloneNode(true);
+        var Nc4 = c3.cloneNode(true);
+
+        Nc1.append(h1_1);
+        Nc1.append(head_p);
+
+        Nc2.append(context_p1);
+
+        Nc3.append(context_address);
+        Nc4.append(context_update);
+
+        var Nrow = row.cloneNode(true);
+        Nrow.append(Nc1);
+        Nrow.append(Nc2);
+        Nrow.append(Nc3);
+        Nrow.append(Nc4);
+
+        show.append(Nrow);
+        show.appendChild(document.createElement("hr"));
+
+    };
+
+
+</script>
+
+<div class="row">
+    <div class="hidden-xs col-sm-2 col-md-2">
+        <a data-category="3" class="details-header">全球展会</a>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <ul class="details-ul">
+            <li><a  data-type="1" class="details-a-Nclick">国内展会</a></li>
+            <li><a  data-type="2" class="details-a-Nclick">国际展会</a></li>
+            <li><a  data-type="3" class="details-a-click">美博会参展商名录</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="hidden-xs">
+        <hr class="hr1" style="padding-top: 10px">
+    </div>
+</div>
+<div class="row hidden-xs show-box3-header">
+    <div class=" col-sm-4 col-md-4">
+        参展公司
+    </div>
+    <div class=" col-sm-3 col-md-3" style="padding-left: 8rem;">
+        邮箱
+    </div>
+    <div class=" col-sm-2 col-md-2">
+        参展日期
+    </div>
+    <div class=" col-sm-2 col-md-2">
+        展馆/展位
+    </div>
+</div>
+
+<hr>
+
+<div id="show">
+
+</div>

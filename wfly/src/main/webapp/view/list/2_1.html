@@ -1,0 +1,121 @@
+<script>
+
+
+    var showData = function (data) {
+        var DETAILS_URL = "/view/data/school.html";
+        var LOGO_URL = "/image/school/";
+        var show = document.getElementById("show");
+        var row = document.createElement("div");
+        row.classList.add("row");
+        row.classList.add("show-box3");
+        row.setAttribute("style","display: none;");
+        var c1 = document.createElement("div");
+        c1.classList.add("col-xs-6");
+        c1.classList.add("col-sm-3");
+        c1.classList.add("col-md-3");
+        c1.classList.add("show3-head");
+        var c2 = document.createElement("div");
+        c2.classList.add("col-xs-6");
+        c2.classList.add("col-sm-2");
+        c2.classList.add("col-md-2");
+        c2.classList.add("show3-context");
+        var c3 = document.createElement("div");
+        c3.classList.add("hidden-xs");
+        c3.classList.add("col-sm-2");
+        c3.classList.add("col-md-2");
+        c3.classList.add("show3-x");
+
+        var p = document.createElement("p");
+        var span = document.createElement("span");
+        var a = document.createElement("a");
+        a.setAttribute("href",DETAILS_URL+"?d="+data.id);
+
+        var h1 = document.createElement("h1");
+        h1.innerHTML = data.school_name	;
+        h1.setAttribute("style","color: #000000");
+        a1 = a.cloneNode(true);
+        a1.appendChild(h1);
+
+        var head_p = p.cloneNode(true);
+        head_p.innerHTML = data.school_type;
+
+        var context_p1 = p.cloneNode(true);
+        context_p1.innerHTML = data.school_course;
+        var context_address = p.cloneNode(true);
+        context_address.innerHTML = data.school_address;
+
+        var context_update = p.cloneNode(true);
+        context_update.innerHTML = data.school_create_time;
+
+        var logo = document.createElement("img");
+        a2 = a.cloneNode(true);
+        logo.setAttribute("src",LOGO_URL+data.logo_url);
+        logo.setAttribute("style","margin-top: -2rem;position: inherit;width: 160px;height: 120px;");
+        a2.appendChild(logo);
+
+        var Nc1 = c1.cloneNode(true);
+        var Nc2 = c2.cloneNode(true);
+        var Nc3 = c3.cloneNode(true);
+        var Nc4 = c3.cloneNode(true);
+        var Nc5 = c3.cloneNode(true);
+
+        Nc1.append(a1);
+        Nc1.append(head_p);
+
+        Nc2.append(context_p1);
+
+        Nc3.append(context_address);
+        Nc4.append(context_update);
+        Nc5.append(a2);
+
+        var Nrow = row.cloneNode(true);
+        Nrow.append(Nc1);
+        Nrow.append(Nc2);
+        Nrow.append(Nc3);
+        Nrow.append(Nc4);
+        Nrow.append(Nc5);
+
+        show.append(Nrow);
+        show.appendChild(document.createElement("hr"));
+    };
+
+
+</script>
+
+<div class="row">
+    <div class="hidden-xs col-sm-2 col-md-2">
+        <a data-category="2" class="details-header">培训教学</a>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <ul class="details-ul">
+            <li><a  data-type="1" class="details-a-click">培训教学</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="hidden-xs">
+        <hr class="hr1" style="padding-top: 10px">
+    </div>
+</div>
+<div class="row hidden-xs show-box3-header">
+    <div class=" col-sm-3 col-md-3">
+        学校名字
+    </div>
+    <div class=" col-sm-2 col-md-2" style="padding-left: 8rem;">
+        主要科目
+    </div>
+    <div class=" col-sm-2 col-md-2">
+        所在地址
+    </div>
+    <div class=" col-sm-2 col-md-2">
+        成立时间
+    </div>
+    <div class=" col-sm-2 col-md-2">
+        logo
+    </div>
+</div>
+
+<hr>
+<div id="show">
+</div>

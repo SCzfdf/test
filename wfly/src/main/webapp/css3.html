@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh" >
+<head>
+    <link rel="shortcut icon" href="/image/logo/favicon.ico"/>
+    <meta charset="utf-8">
+    <!-- 强制ie用最高模式渲染 -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <!-- 强制ie用最高模式或者谷歌frame渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+    <!-- 移动设备优先(优先栅格布局-水平排列) -->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!-- 移动设备优先(优先栅格布局-水平排列) 禁止用户缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="x5-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+
+    <link href="/css/public/rasterize.css" rel="stylesheet" type="text/css" />
+    <link href="/css/public/default.css" rel="stylesheet" type="text/css" />
+    <link href="/css/public/css3.css" rel="stylesheet" type="text/css" />
+    <title>CSS 3</title>
+</head>
+<body style="touch-action: pan-x;">
+
+<div id="pageContext" class="col-xs-12 musicDiv" style="touch-action: pan-y;">
+    <!--音乐播放按钮-->
+    <div id="musicIcon" style="position:absolute;z-index: 999">
+        <div class="musciIcon musciIconRotate" style="width : .54em; "></div>
+        <audio src="/image/Pianoboy高至豪 - The truth that you leave.mp3" loop="loop" preload="preload" autoplay="autoplay"></audio>
+    </div>
+
+    <!--正文  z-index必须写且为倒序 -->
+    <div id="page1" class="page show" data-appid="1" style="z-index: 3">
+        <div id="lantern"><img src="/image/public/ADIIABAEGAAgvIjmxAUouI3nkwcwyQc44QU.png"></div>
+        <div id="case1"><img src="/image/public/ADIIABAEGAAgx4jmxAUooIiqyAEwvwI43gU.png"></div>
+        <div id="char1"><img src="/image/public/ADIIABAEGAAgvojmxAUox5uQ7QIw_gE4nwI.png"></div>
+        <div id="char2"><img src="/image/public/ADIIABAEGAAgwIjmxAUopq_WhgYwuwE48AE.png"></div>
+        <div id="char3"><img src="/image/public/ADIIABAEGAAgwYjmxAUo8L7mjgYwiAE4gAI.png"></div>
+        <div id="firework1"><img src="/image/public/ADIIABAEGAAgw4jmxAUohL3TWzDsATiGAg.png"></div>
+        <div id="firework2"><img src="/image/public/ADIIABAEGAAgw4jmxAUohL3TWzDsATiGAg.png"></div>
+    </div>
+    <div id="page2" class="page hide" data-appid="2" style="z-index: 2"></div>
+    <div id="page3" class="page hide" data-appid="3" style="z-index: 1"></div>
+
+</div>
+
+<script charset="UTF-8" type="text/javascript" src="./js/public/jquery-3.2.1.min.js"></script>
+<script charset="UTF-8" type="text/javascript" src="/js/public/css3.js"></script>
+
+</body>
+</html>

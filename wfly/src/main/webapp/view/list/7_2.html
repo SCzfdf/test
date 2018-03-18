@@ -1,0 +1,130 @@
+<script>
+    $(document).ready(function () {
+        var page = document.getElementById("page");
+        if (page!=null) page.innerHTML = "";
+        button_none_click_seleData();
+        a_details_click_showList();
+    });
+    button_none_click_seleData = function (num) {
+        document.getElementById("search").onclick = function () {
+            var Ecom = document.getElementById("com");
+            var com = Ecom.options[Ecom.selectedIndex].value;
+            var num = document.getElementById("num").value;
+            if ( num != ""){
+                $.ajax({
+                    url: "/data/queryExpressage.do",
+                    type:"post",
+                    data: {"com":com,
+                        "num":num
+                    },
+                    success: function (data) {
+                        if(data.code == 200) {
+                            document.getElementById("show").innerHTML = "";//清空
+                            for (var i = 0; i < data.data.length; i++) {
+                                var d = data.data[i];
+                                console.log(d);
+                                showData(d);
+
+                                var show = document.getElementById("show").children;
+                                $(show[show.length-2]).fadeIn(i*250);//渐显
+                            }
+                        }else{
+                            var page = document.getElementById("page");
+                            if(page != null)
+                                page.innerHTML = "";
+                        }
+                    }
+                })
+            }else {
+                alert("请输入快递单号");
+            }
+        }
+    };
+</script>
+<script>
+
+    var showData = function (data) {
+        var IMAGE_URL = "/image/logistics/";
+        var DEFAULT_IMAGE = IMAGE_URL+"default.png";
+        var row = document.createElement("div");
+        row.classList.add("row");
+        row.classList.add("box7-1");
+        row.setAttribute("style","display: none;");
+        var c1 = document.createElement("div");
+        c1.classList.add("col-xs-12");
+        c1.classList.add("col-sm-12");
+        c1.classList.add("col-md-12");
+
+        var p = document.createElement("p");
+        var a = document.createElement("a");
+        var span = document.createElement("span");
+        var hr = document.createElement("hr");
+        hr.classList.add("box7-hr");
+
+
+
+        var p1 = p.cloneNode(true);
+        var a1 = a.cloneNode(true);
+        a1.innerHTML = data.time;
+        p1.innerHTML = "更新时间：";
+        p1.append(a1);
+        var p2 = p.cloneNode(true);
+        p2.innerHTML = "详情："+data.context;
+
+        Nc1 = c1.cloneNode(true);
+        Nc1.append(p1);
+        Nc1.append(p2);
+
+        var Nrow = row.cloneNode(true);
+
+        Nrow.append(Nc1);
+
+        var hr1 = hr.cloneNode(true);
+        var show = document.getElementById("show");
+        show.append(Nrow);
+        show.append(hr1);
+    };
+
+</script>
+
+<div class="row">
+    <div class="hidden-xs col-sm-2 col-md-2">
+        <a data-category="7" class="details-header">物流快递</a>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <ul class="details-ul">
+            <li><a  data-type="1" class="details-a-Nclick">全国物流</a></li>
+            <li><a  data-type="2" class="details-a-click">快递查询</a></li>
+            <li><a  data-type="3" class="details-a-Nclick">网点查询</a></li>
+        </ul>
+    </div>
+</div>
+<div class="hidden-xs">
+    <hr class="hr1"/>
+</div>
+
+<div class="select-area">
+    <div class="area">
+        <select id="com" >
+            <option value="auto" selected="selected">自动</option>
+            <option value="ems">EMS</option>
+            <option value="jd">京东</option>
+            <option value="shunfeng">顺丰</option>
+            <option value="shentong">申通</option>
+            <option value="yuantong">圆通</option>
+            <option value="zhongtong">中通</option>
+            <option value="huitongkuaidi">汇通</option>
+            <option value="tiantian">天天</option>
+            <option value="zhaijisong">宅急送</option>
+        </select>
+        <input type="text" id="num" placeholder="请输入快递单号"/>
+        <button type="button" id="search">搜索</button>
+        <span class="hidden-xs">如果没有找到想要的快递 可以试试自动~</span>
+    </div>
+</div>
+<div id="show">
+    <div class="box7-1">
+        <p></p>
+        <p></p>
+    </div>
+</div>

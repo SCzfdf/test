@@ -1,0 +1,181 @@
+.box-f{
+    min-height: 45rem;
+}
+.logo{
+    width:16rem;
+    height:6rem;
+    margin-top: 2.5rem;
+}
+.search{
+    width: 100%;
+    display: inline-block;
+    margin-top: 3.2rem;
+}
+.search >input{
+    height: 2rem;
+    border: 1px solid #FF008C;
+    width: 75%;
+    font-size: 1rem;
+}
+.search >button{
+    height: 2.1rem;
+    background-color: #FF008C;
+    color: #FFFFFF;
+    border: 0px;
+    width: 20%;
+    font-size: 17px;
+}
+.search >button:hover{
+    box-shadow: 1px 1px 2px 1px #e6e6e6;
+    background-color: #f5008a;
+}
+.search >button:active{
+    box-shadow: 0 0 0 0 ;
+    background-color: #c7006c;
+}
+.search-p >a{
+    font-size: 12px;
+    font-family: '新宋体';
+}
+/*==========================================================================*/
+.box-c2{
+    background-color: #FF008C;
+    margin-top: 2rem;
+}
+.list-basic{
+    width: auto;
+    height: 2.5rem;
+}
+.list-basic >li{
+    float: left;
+}
+.list-basic >li >a{
+    color: #FFFFFF;
+    font-size: 0.95rem;
+    font-family: 新宋体;
+    line-height: 2.5rem;
+    padding: 0 1.3rem;
+    display: inline-block;
+}
+.list-basic >li:hover{
+    background-color: #eb007d;
+}
+/*==========================================================================*/
+@media (min-width: 768px) {
+    .box-c3{
+        min-height: 37rem;
+        background-color: #F9F9F9;
+        padding-top: 0.8rem;
+    }
+}
+.box-c3{
+    min-height: 37rem;
+    background-color: #F9F9F9;
+}
+.inter-box{
+    background-color: #FFFFFF;
+    margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+    .inter-box{
+    }
+}
+.school-header{
+
+}
+.school-header-image >img{
+    width: 160px;
+    height: 120px;
+}
+@media (min-width: 768px) {
+    .school-header-context{
+        margin-left: -4rem;
+    }
+}
+.school-header-context{
+}
+.school-header-context >h1{
+    color: #eb007d;
+    font-size: 1.3rem;
+}
+.school-header-context >p{
+    letter-spacing: 3px;
+
+}
+.school-header-context >p >span{
+    display: block;
+    color: #7a7a7a;
+}
+@media (min-width: 768px) {
+    .school-header-context >p >span{
+        color: #7a7a7a;
+        display: inline;
+    }
+}
+hr{
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #cccccc;
+    margin: 1rem 0;
+}
+/*==========================================================================*/
+.school-context{
+
+}
+@media (min-width: 768px) {
+    .school-context-box{
+        margin: 0 15px;
+        width: 97%;
+        border: 2px solid #cccccc;
+        border-top: 0;
+    }
+    .school-context-box-header{
+        border-top: 5px solid #db047a;
+        border-bottom: 1px solid #cccccc;
+        display: block;
+    }
+    .school-context-box >p{
+        text-indent: 2em;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        line-height:2rem;
+        letter-spacing: 3px;
+    }
+}
+.school-context-box{
+    margin: 0;
+    width: 100%;
+    border : 0;
+}
+.school-context-box-header{
+    border-top: 5px solid #db047a;
+    border-bottom: 1px solid #cccccc;
+}
+.school-context-box-header >h1{
+    display: inline-block;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+}
+.school-context-box >p{
+    text-indent: 2em;
+    margin-bottom: 20px;
+    line-height:2rem;
+    letter-spacing: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,158 @@
+<script>
+    $(document).ready(function () {
+        var page = document.getElementById("page");
+        if(page != null) page.innerHTML = "";
+        a_details_click_showList();
+
+        n = getQueryString("num");
+        n!=null ? ajaxInformation(n) : ajaxInformation(1);
+
+    });
+    DETAILS_URL = "/view/matchMessage/";
+
+
+    var ajaxInformation = function (num) {
+        $.ajax({
+            url: "/data/getInformationList.do",
+            type: "get",
+            //async:false,
+            data: {
+                "type":type,
+                "num":num
+            },
+            success: function(data) {
+                if(data.code == 200) {
+                    ppaging(
+                        document.getElementById("page"),
+                        num,
+                        data.totalPage,
+                        data.totalSize
+                    );
+                    document.getElementById("show").innerHTML = "";//清空
+                    for (var i = 0; i < data.data.length; i++) {
+                        var d = data.data[i];
+                        showData(d);
+
+//                        var show = document.getElementById("show").children;
+//                        $(show[show.length-2]).fadeIn(i*250);//渐显 XXX:会展和快递比较特殊在页面做
+//                         $(show[show.length-1]).fadeIn(i*250);
+                    }
+                }else{
+                    var page = document.getElementById("page");
+                    if(page != null)
+                        page.innerHTML = "";
+                }
+                a_Page_ready_bindHear3();
+            },
+            error:function () {
+                var page = document.getElementById("page");
+                if(page != null)
+                    page.innerHTML = "";
+            }
+        });
+        a_details_click_showList();
+    };
+
+    var a_Page_ready_bindHear3 = function (){
+        var as = document.getElementById("page").children;
+        var z=0;
+        for (; z<as.length; ){
+            a = as[z];
+            z = z+1;
+            a.href="javascript:scroll(0,0)";
+            a.onclick = function (e){
+                t = e.target.title;
+                history.pushState(null,null,"?category=4"+"&type="+type+"&num="+t);
+                $.ajax({
+                    url: "/data/getInformationList.do",
+                    type: "get",
+                    // async:false,
+                    data: {
+                        "type":type,
+                        "num":t
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if(data.code == 200) {
+                            ppaging(
+                                document.getElementById("page"),
+                                t,
+                                data.totalPage,
+                                data.totalSize
+                            );
+                            document.getElementById("show").innerHTML = "";//清空
+                            for (var i = 0; i < data.data.length; i++) {
+                                var d = data.data[i];
+                                showData(d);
+
+//                                var show = document.getElementById("show").children;
+//                                $(show[show.length-2]).fadeIn(i*250);//渐显 XXX:会展和快递比较特殊在页面做
+//                                 $(show[show.length-1]).fadeIn(i*250);
+                            }
+                        }else{
+                            var page = document.getElementById("page");
+                            if(page != null)
+                                page.innerHTML = "";
+                        }
+                        a_Page_ready_bindHear3();
+                    },
+                    error:function () {
+                        var page = document.getElementById("page");
+                        if(page != null)
+                            page.innerHTML = "";
+                    }
+                });
+                a_details_click_showList();
+            };
+        }
+    };
+
+
+
+
+    var show = document.getElementById("show");
+    var showData = function(data){
+        var a = document.createElement("a");
+        str = data.message;
+        a.setAttribute("href",DETAILS_URL+str);
+        a.innerHTML = str.substring(0,str.length-5);
+
+        var br = document.createElement("br");
+
+        show.append(a);
+        show.append(br);
+    }
+
+</script>
+
+<style>
+    #show >a{
+		display: inline-block;
+		margin: 6px 0;
+        font-size: 1.2rem;
+	}
+    a{
+        color: black;
+    }
+</style>
+<div class="row">
+    <div class="hidden-xs col-sm-2 col-md-2">
+        <a data-category="4" class="details-header">美妆资讯</a>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <ul class="details-ul">
+            <li><a  data-type="1" class="details-a-Nclick">美妆资讯</a></li>
+            <li><a  data-type="2" class="details-a-click">美妆赛事</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="hidden-xs">
+        <hr class="hr1" style="padding-top: 10px">
+    </div>
+</div>
+
+<div id="show">
+
+</div>

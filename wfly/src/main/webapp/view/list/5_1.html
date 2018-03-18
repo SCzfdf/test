@@ -1,0 +1,140 @@
+<script>
+    var DETAIL_PREFIX = "/view/data/invitation.html";
+
+    //    var DETAILS_URL = "/view/data/"
+    var show = document.getElementById("show");
+    var row = document.createElement("div");
+    row.classList.add("row");
+    row.classList.add("show-box5");
+    row.setAttribute("style","display: none;");
+    var c1 = document.createElement("div");
+    c1.classList.add("col-xs-6");
+    c1.classList.add("col-sm-4");
+    c1.classList.add("col-md-4");
+    c1.classList.add("show5-head");
+    var c2 = document.createElement("div");
+    c2.classList.add("col-xs-6");
+    c2.classList.add("col-sm-2");
+    c2.classList.add("col-md-2");
+    c2.classList.add("show5-context");
+    var c3 = document.createElement("div");
+    c3.classList.add("hidden-xs");
+    c3.classList.add("col-sm-2");
+    c3.classList.add("col-md-2");
+    c3.classList.add("show5-x");
+
+    var p = document.createElement("p");
+    var span = document.createElement("span");
+
+    var showData = function (data) {
+        var h1 = document.createElement("h1");
+        h1.innerHTML = data.jod_name;
+        var head_p = p.cloneNode(true);
+        head_p.innerHTML = data.company_name;
+
+        var context_p1 = p.cloneNode(true);
+        context_p1.innerHTML = data.treatment_leve;
+        var context_span1 = span.cloneNode(true);
+        var context_span2 = span.cloneNode(true);
+        var context_span3 = span.cloneNode(true);
+        context_span1.innerHTML = "五险一金";
+        context_span2.innerHTML = "包吃住";
+        context_span3.innerHTML = "年终奖";
+
+
+        var context_address = p.cloneNode(true);
+        context_address.innerHTML = data.jod_release_address;
+
+        var context_update = p.cloneNode(true);
+        context_update.innerHTML = data.jod_release_time;
+
+        var button = document.createElement("button");
+        button.setAttribute("onclick","window.open('" + DETAIL_PREFIX+"?d="+data.id+
+            "')");
+        button.innerHTML = "查看职位";
+
+
+        var Nc1 = c1.cloneNode(true);
+        var Nc2 = c2.cloneNode(true);
+        var Nc3 = c3.cloneNode(true);
+        var Nc4 = c3.cloneNode(true);
+        var Nc5 = c3.cloneNode(true);
+
+        Nc1.append(h1);
+        Nc1.append(head_p);
+
+        Nc2.append(context_p1);
+        var context_p2 = p.cloneNode(true);
+        context_p2.append(context_span1);
+        context_p2.append(context_span2);
+        context_p2.append(context_span3);
+        Nc2.append(context_p2);
+
+        Nc3.append(context_address);
+        Nc4.append(context_update);
+        Nc5.append(button);
+
+
+        var Nrow = row.cloneNode(true);
+        Nrow.append(Nc1);
+        Nrow.append(Nc2);
+        Nrow.append(Nc3);
+        Nrow.append(Nc4);
+        Nrow.append(Nc5);
+
+//        var href = document.createElement("a");
+//        href.setAttribute("href",DETAIL_PREFIX+"?d="+data.id);
+
+//        href.append(Nrow);
+//        show.append(href);
+        show.append(Nrow);
+        show.appendChild(document.createElement("hr"));
+    };
+
+</script>
+
+<div class="row">
+    <div class="hidden-xs col-sm-2 col-md-2">
+        <a data-category="5" class="details-header">店家招聘</a>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <ul class="details-ul">
+            <li><a  data-type="1" class="details-a-click">本地招聘信息</a></li>
+            <li><a  data-type="2" class="details-a-Nclick">本地求职信息</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="hidden-xs">
+        <hr class="hr1" style="padding-top: 10px">
+    </div>
+</div>
+
+<div id="show">
+    <!--<hr>-->
+    <!--<div class="row show-box5">-->
+        <!--<div class="col-xs-6 col-sm-4 col-md-4 show5-head">-->
+            <!--<h1>美容养生连锁会所管理人员</h1>-->
+            <!--<p>广州生物科技有限公司</p>-->
+        <!--</div>-->
+        <!--<div class="col-xs-6 col-sm-2 col-md-2 show5-context">-->
+            <!--<p>2000元以上</p>-->
+            <!--<p>-->
+                <!--<span>五险一金</span>-->
+                <!--<span>包吃住</span>-->
+                <!--<span>年终奖</span>-->
+            <!--</p>-->
+        <!--</div>-->
+        <!--<div class="hidden-xs col-sm-2 col-md-2 show5-x">-->
+            <!--<p>广州佛山</p>-->
+        <!--</div>-->
+        <!--<div class="hidden-xs col-sm-2 col-md-2 show5-x">-->
+            <!--<p>发布时间</p>-->
+        <!--</div>-->
+        <!--<div class="hidden-xs col-sm-2 col-md-2 show5-x">-->
+            <!--<button onclick='window.open("http://www.baidu.com")'>查看职位</button>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<hr>-->
+</div>

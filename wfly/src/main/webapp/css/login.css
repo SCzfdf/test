@@ -1,0 +1,162 @@
+/*顶部*/
+header {
+    /*盒子 居中*/
+    max-width: 1280px;
+    height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.4rem;
+}
+header .logo{
+    float: left;
+    height: 5.5rem;
+    width: 15rem;
+}
+header .logo > img {
+    height: 100%;
+    width: 100%;
+}
+
+header .welcome_text {
+    float: left;
+    height: 6rem;
+    width: auto;
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+header .welcome_text > span {
+    line-height: 4rem;
+    font-size: 2rem;
+}
+header .fqa {
+    float: right;
+    padding-top: 4rem;
+}
+header .fqa > img{
+    height: 1.2rem;
+    width: 1.2rem;
+}
+header .fqa > a{
+    color: #db047a;
+}
+
+/*正文*/
+section{
+	/*盒子 居中*/
+    width: 1920px;
+    height: 579px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url(../image/login_background.jpg);
+}
+.section{
+    /*盒子 居中*/
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 30px;
+}
+.login_context{
+    float: right;
+    height: 479px;
+    width: 379px;
+    background-color: #FFFFFF;
+}
+.login_context .text{
+    font-size: 1.4rem;
+    color: #db047a;
+    font-weight: bold;
+    padding: 1rem;
+}
+.login_context > hr{
+    color: #d7d7d7;
+    margin: 0px 0px;
+}
+form{
+    padding: 1rem;
+    padding-top: 3rem;
+}
+.form > input {
+    color: #6e6e6e;
+    width: 100%;
+    height: 2.7rem;
+    margin-bottom: 2rem;
+}
+#u{
+    background-image: url(../image/u.png);
+    background-repeat: no-repeat;
+    padding-left: 3.5rem;
+    border: 1px solid rgb(165, 165, 167);
+}
+#P{
+	background-image: url(../image/p.png);
+	background-repeat: no-repeat;
+    padding-left: 3.5rem;
+    border: 1px solid rgb(165, 165, 167);
+}
+.login_context .button{
+    text-align: center;
+    height: 2.7rem;
+    font-size: 1.2rem;
+    line-height: 2.7rem;
+    width: 100%;
+    background: -ms-linear-gradient(top, #db047a,  #b40461);
+    background:-moz-linear-gradient(top,#db047a, #b40461);/*火狐*/
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#db047a), to(#b40461));      /* Safari 4-5, Chrome 1-9*/
+    background: -webkit-linear-gradient(top, #db047a, #b40461);   /*Safari5.1 Chrome 10+*/
+    background: -o-linear-gradient(top, #db047a, #b40461);  /*Opera 11.10+*/
+    box-shadow: 1px 1px 1px 0px #c5c5c5;
+}
+.button > a{
+	color: #FFFFFF;
+	width: 100%;
+	display:block;
+}
+.form_bottom{
+    margin-top: 2rem;
+    float: left;
+    line-height: 2rem;
+    width: 100%;
+    color: #6f6d85;
+}
+#save{
+    width: auto;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

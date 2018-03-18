@@ -1,0 +1,243 @@
+.hide{
+    display: none;
+}
+.show{
+    display:block;
+}
+div >img{
+    /*width: auto;*/
+    /*height: auto;*/
+}
+.page{
+    background-image: url("/image/public/ADIIABACGAAgmIfmxAUokJ6e7AQw7gU4twk.jpg");
+    background-repeat: no-repeat;
+    background-position:center center;
+    width: 100%;
+    height: 100%;
+    transition: all 500ms ease 0s;
+    position:absolute;z-index: 3
+}
+#pageContext{
+    width: 100%;
+    height: 100%;
+    margin: 0 -15px;
+    /*touch-action: pan-x;*/
+    /*-moz-user-select: none;*/
+}
+#pageContext >div{
+    position: absolute;
+}
+#pageContext >div >div{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+/*音乐按钮============================================================================*/
+.musicDiv{
+    position: absolute;
+    font-size:50px;
+}
+#musicIcon{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    width: .7em;
+    height: .7em;
+    right: 10px;
+    top: 10px;
+}
+.musciIcon{
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: url("/image/public/musicIcon.png");
+    background-size: .2em .3em;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    margin: 0.08em;
+    border-radius: 50%;
+    width: .54em;
+    height: .54em;
+}
+.musciIconRotate{
+    transform: translate3d(0,0,0);
+    animation: musicIconRotate 3s 0s linear infinite ;
+    -webkit-animation: musicIconRotate 3s 0s linear infinite ;
+}
+@keyframes musicIconRotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/*page1============================================================================*/
+#lantern{
+    top: 1em;
+    animation: lantern 2s 0s linear 1 ;
+    -webkit-animation: lantern 2s 0s linear 1 ;
+}
+#lantern >img{
+    width: 100%;
+    height: 100%;
+}
+@keyframes lantern {
+    0%   {opacity : 0;}
+    100% {opacity : 1;}
+}
+#case1{
+    padding-top: 1.4em ;
+    animation: slideDown 1s 0s linear 1 ;
+    -webkit-animation: slideDown 1s 0s linear 1 ;
+}
+#case1 >img{
+    width: 2.2em;
+    height: 4em;
+}
+/*向下滑动*/
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-100%,0);
+        transform: translate3d(0,-100%,0);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0,25px,0);
+        transform: translate3d(0,25px,0);
+    }
+    75% {
+        -webkit-transform: translate3d(0,-10px,0);
+        transform: translate3d(0,-10px,0);
+    }
+    90% {
+        -webkit-transform: translate3d(0,5px,0);
+        transform: translate3d(0,5px,0);
+    }
+    100% {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+#char1{
+    padding-top: 1.6em;
+    animation:fadeInRight 600ms ease 1200ms 1 normal both running ;
+    -webkit-animation:fadeInRight 600ms ease 1600ms 1 normal both running ;
+}
+#char2{
+    padding-top: 3.0em;
+    animation:fadeInLeft 600ms ease 1400ms 1 normal both running ;
+    -webkit-animation:fadeInLeft 600ms ease 1400ms 1 normal both running ;
+}
+#char3{
+    padding-top: 4.2em;
+    animation:fadeInRight 600ms ease 1600ms 1 normal both running ;
+    -webkit-animation:fadeInRight 600ms ease 1600ms 1 normal both running ;
+}
+#char1 >img{
+    width:2.4em;
+    height: 1.5em;
+    padding-left: 1em;
+
+}
+#char2 >img{
+    width:2.2em;
+    height: 1.5em;
+    padding-right: 1em;
+
+}
+#char3 >img {
+    width: 2em;
+    height: 1.7em;
+    padding-left: 1em;
+}
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(50%,0,0);
+        transform: translate3d(50%,0,0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%,0,0);
+        transform: translate3d(-100%,0,0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+#firework1{
+    padding-top: 6.4em;
+    opacity: 0;
+    animation:hide_show 200ms linear 3s 1 forwards,
+    scale1 300ms linear 4500ms 1 forwards,
+    flicker 900ms ease 5500ms infinite normal forwards running;
+    -webkit-animation:hide_show 1s linear 3s 1 forwards,
+    scale1 1s linear 4s 1 forwards,
+    flicker 900ms ease 5s infinite normal forwards running;
+}
+#firework1 >img{
+    padding-right: 4em;
+    width: 7em;
+    height: 3.2em;
+}
+#firework2{
+    padding-top: 5.4em;
+    opacity: 0;
+    animation:hide_show 1s linear 2s 1 forwards,
+    scale1 1s linear 3s 1 forwards,
+    flicker 1000ms ease 4s infinite normal forwards running;
+    -webkit-animation:hide_show 1s linear 2s 1 forwards,
+    scale1 1s linear 3s 1 forwards,
+    flicker 1000ms ease 4s infinite normal forwards running;
+}
+#firework2 >img{
+    padding-left: 3em;
+    width: 5.5em;
+    height: 2.5em;
+}
+@keyframes hide_show{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes flicker {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        opacity: 0;
+    }
+}
+@keyframes scale1 {
+    0%, 50% {
+        transform: scale(1.1,1.1);
+    }
+    25%, 75% {
+        transform: scale(0.9,0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
+
+
+
+
+

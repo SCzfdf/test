@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<link rel="shortcut icon" href="/image/logo/favicon.ico"/>
+	<script charset="UTF-8" type="text/javascript" src="js/public/jquery-3.2.1.min.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js/public/md5.min.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js/public/GVerify.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="js/register.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>美帮来  注册</title>
+	<link href="./css/register.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+	<div id="header_html"></div>
+	<!--<object style="border:0px" type="text/x-scriptlet" data="header.html" width=100% height=60>
+</object>-->
+
+
+	<header>
+		<div class="logo">
+			           <a href="http://www.meibanglai.com/">
+                    <img src="image/logo.png" width="206px" height="75px" alt="logo">
+           </a>
+			<div class="welcome_text">
+				<span>欢迎注册!</span>
+			</div>
+			<!--<div class="fqa">-->
+			<!--<img src="image/login_fqa_img.png">-->
+			<!--<a>对"登录页面"提建议</a>-->
+			<!--</div>-->
+		</div>
+	</header>
+	<hr>
+	<section  style="min-height: 700px">
+		<div class="register_context">
+			<div class="top_text">
+				<div class="top_text_left">注册会员</div>
+				<div class="top_text_rigth">
+					已有账号?
+					<a style="color: #db047a" href="login.html">直接登陆</a>
+				</div>
+			</div>
+			<form>
+				<div class="form">
+					<input type="text" id="u" value="请输手机号" onfocus="if (value =='请输手机号'){value ='';this.setAttribute('style','color: #000000')}"
+					 onBlur="if (value ==''){value='请输手机号'; this.setAttribute('style','color: #6e6e6e')}" />
+					<div class="register_tips_hidden">请输入大于2小于20的字符</div>
+
+					<input type="text" id="p1" value="请输入6-24位密码" onfocus="if (value =='请输入6-24位密码'){value ='';this.setAttribute('style','color: #000000')} this.setAttribute('type','password')"
+					 onBlur="if (value ==''){value='请输入6-24位密码'; this.setAttribute('style','color: #6e6e6e');this.setAttribute('type','text')}"
+					/>
+					<div class="register_tips_hidden">请输入大于6小于20的字符</div>
+
+					<input type="text" id="p2" value="请再次输入密码" onfocus="if (value =='请再次输入密码'){value ='';this.setAttribute('style','color: #000000')} this.setAttribute('type','password')"
+					 onBlur="if (value ==''){value='请再次输入密码'; this.setAttribute('style','color: #6e6e6e');this.setAttribute('type','text')}"
+					/>
+					<div class="register_tips_hidden">密码输入不一致</div>
+
+					<input type="text" id="yanzheng" />
+					<!--<div class="form_img"><canvas id="verifyCanvas" width="143" height="43" style="cursor: pointer;"></canvas></div>-->
+					<div id="form_img">
+						<canvas id="verifyCanvas" />
+					</div>
+					<div class="register_tips_hidden">验证码输入错误</div>
+
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" value="我已阅读并接受《美帮来使用协议》与《隐私权条款》" />我已阅读并接受《美帮来使用协议》与《隐私权条款》
+				</div>
+			</form>
+			<div class="button">
+				<a id="register" href="javascript:void(0);">立即注册</a>
+			</div>
+		</div>
+	</section>
+
+
+
+	<div id="bottom_html"></div>
+
+	<script>
+//    var verifyCode = new GVerify("form_img");
+
+//    document.getElementById("my_button").onclick = function(){
+//        var res = verifyCode.validate(document.getElementById("code_input").value);
+//        if(res){
+//            alert("验证正确");
+//        }else{
+//            alert("验证码错误");
+//        }
+//    }
+	</script>
+	<!--<object style="border:0px" type="text/x-scriptlet" data="bottom.html" width=100% height=60></object>-->
+</body>
+
+</html>

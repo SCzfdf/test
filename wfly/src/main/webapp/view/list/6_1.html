@@ -1,0 +1,168 @@
+<script>
+    var DEFAULT_PREFIX = "/view/data/shoptransfer.html";
+    var DEFAULT_IMAGE_URI = "/image/shoptransfer/";
+    var DEFAULT_IMAGE = DEFAULT_IMAGE_URI+"default.png";
+
+    var show = document.getElementById("show");
+    var row = document.createElement("div");
+    row.classList.add("row");
+    row.classList.add("show-box6");
+    row.setAttribute("style","display: none;");
+    var c1 = document.createElement("div");
+    c1.classList.add("hidden-xs");
+    c1.classList.add("col-sm-2");
+    c1.classList.add("col-md-2");
+    c1.classList.add("show6-head-img");
+    var c2 = document.createElement("div");
+    c2.classList.add("col-xs-6");
+    c2.classList.add("col-sm-3");
+    c2.classList.add("col-md-3");
+    c2.classList.add("show6-head");
+    var c3 = document.createElement("div");
+    c3.classList.add("col-xs-6");
+    c3.classList.add("col-sm-2");
+    c3.classList.add("col-md-2");
+    c3.classList.add("show6-context");
+    var c4 = document.createElement("div");
+    c4.classList.add("hidden-xs");
+    c4.classList.add("col-sm-1");
+    c4.classList.add("col-md-1");
+    c4.classList.add("show6-x");
+    var c5 = document.createElement("div");
+    c5.classList.add("hidden-xs");
+    c5.classList.add("col-sm-2");
+    c5.classList.add("col-md-2");
+    c5.classList.add("show6-x");
+
+    var img = document.createElement("img");
+    var a = document.createElement("a");
+    var p = document.createElement("p");
+    var h1 = document.createElement("h1");
+    var span = document.createElement("span");
+
+    var showData = function (data) {
+        var img1 = img.cloneNode(true);
+        img1.setAttribute("src" , data.image_url=="" ? DEFAULT_IMAGE : DEFAULT_IMAGE_URI+data.image_url.split(";")[0]);
+
+        var h1_1 = h1.cloneNode(true);
+        h1_1.innerHTML = data.transfer_name;
+        var p1 = p.cloneNode(true);
+        p1.innerHTML = data.address;
+
+        var p2 = p.cloneNode(true);
+        p2.innerHTML = data.rental;
+        var p3 = p.cloneNode(true);
+        var span1 = span.cloneNode(true);
+        span1.innerHTML = "转让费："+data.transfer_gold;
+        p3.append(span1);
+
+        var p4 = p.cloneNode(true);
+        p4.innerHTML = data.type;
+
+        var p5 = p.cloneNode(true);
+        p5.innerHTML = formatDate(data.create_time);
+
+        var button = document.createElement("button");
+        button.setAttribute("onclick","window.open('" + DEFAULT_PREFIX+"?d="+data.id+
+            "')");
+        button.innerHTML = "查看详情";
+
+        var Nc1 = c1.cloneNode(true);
+        var Nc2 = c2.cloneNode(true);
+        var Nc3 = c3.cloneNode(true);
+        var Nc4 = c5.cloneNode(true);
+        var Nc5 = c4.cloneNode(true);
+        var Nc6 = c5.cloneNode(true);
+
+        Nc1.append(img1);
+
+        Nc2.append(h1_1);
+        Nc2.append(p1);
+
+        Nc3.append(p2);
+        Nc3.append(p3);
+
+        Nc4.append(p4);
+
+        Nc5.append(p5);
+
+        Nc6.append(button);
+
+
+        var Nrow = row.cloneNode(true);
+        Nrow.append(Nc1);
+        Nrow.append(Nc2);
+        Nrow.append(Nc3);
+        Nrow.append(Nc4);
+        Nrow.append(Nc5);
+        Nrow.append(Nc6);
+
+//        var href = document.createElement("a");
+//        href.setAttribute("href",DEFAULT_PREFIX+"?d="+data.id);
+
+//        href.append(Nrow);
+//        show.append(href);
+        show.append(Nrow);
+        show.appendChild(document.createElement("hr"));
+    };
+
+    var formatDate = function (n) {
+        var now = new Date(n*1000);
+
+        var year=now.getFullYear();
+        var month=now.getMonth()+1;
+        var date=now.getDate();
+//        var hour=now.getHours();
+//        var minute=now.getMinutes();
+//        var second=now.getSeconds();
+        return year+"-"+month+"-"+date;
+    };
+
+</script>
+
+<div class="row">
+    <div class="hidden-xs col-sm-2 col-md-2">
+        <a data-category="6" class="details-header">门店转让</a>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <ul class="details-ul">
+            <li><a  data-type="1" class="details-a-click">门店转让</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="hidden-xs">
+        <hr class="hr1" style="padding-top: 10px">
+    </div>
+</div>
+
+<hr style="padding-top: 1rem;">
+<div id="show">
+    <!--<hr>-->
+    <!--<div class="row show-box6">-->
+        <!--<div class="hidden-xs col-sm-2 col-md-2 show6-head-img">-->
+            <!--<img src="/image/shoptransfer/default.png">-->
+        <!--</div>-->
+        <!--<div class="col-xs-6 col-sm-3 col-md-3 show6-head">-->
+            <!--<h1>美容养生连锁会所管理人员</h1>-->
+            <!--<p>广州生物科技有限公司</p>-->
+        <!--</div>-->
+        <!--<div class="col-xs-6 col-sm-2 col-md-2 show6-context">-->
+            <!--<p>2000元以上</p>-->
+            <!--<p>-->
+                <!--<span>转让费：2000</span>-->
+            <!--</p>-->
+        <!--</div>-->
+        <!--<div class="hidden-xs col-sm-1 col-md-1 show6-x">-->
+            <!--<p>广州佛山</p>-->
+        <!--</div>-->
+        <!--<div class="hidden-xs col-sm-1 col-md-1 show6-x">-->
+            <!--<p>发布时间</p>-->
+        <!--</div>-->
+        <!--<div class="hidden-xs col-sm-2 col-md-2 show6-x">-->
+            <!--<button onclick='window.open("http://www.baidu.com")'>查看职位</button>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<hr>-->
+</div>

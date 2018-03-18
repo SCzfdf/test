@@ -1,0 +1,200 @@
+.marginTableNone{
+	margin-right: -15px;
+	margin-left: -15px;
+	width:auto;
+}
+.marginTop30{
+	margin-top: 30px
+}
+
+.tableSty{
+    background-color: #FFF;
+    margin-top: 10px;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 50px;
+}
+.resumeTop{
+    background-image: url('/image/resumeBackground.jpg');
+    background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;
+}
+.img{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0 auto;
+    width: 150px;
+}
+
+.basic{
+}
+.basic> h1{
+    font-weight: bold;
+    font-size: 22px;
+}
+.basic> span{
+    font-size: 16px;
+}
+
+hr{
+    border-bottom: 1px dashed  #d4d4d4;
+    border-top: 0px;
+}
+
+#reinforce{
+
+}
+#reinforce >p{
+    color: #7a7a7a;
+    font-size: 16px;
+    line-height: 30px;
+}
+#reinforce >p >span{
+    color: #000000;
+    font-size: 16px;
+    line-height: 24px;
+}
+#reinforce >h7{
+    color: #000000;
+    font-size: 22px;
+    display: inline-block;
+    margin-bottom: -10px;
+}
+#reinforce >a{
+    margin-bottom: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: #FE3989;
+    color: #FFFFFF;
+    display: inline-block;
+    width: auto;
+}
+#phone{
+    color: red;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#speciality{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 26px;
+}
+#self-assessment{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 26px;
+}
+
+/*ul栏======================================================================*/
+.box-c2{
+    background-color: #FF008C;
+    margin-top: 2rem;
+}
+.list-basic{
+    width: auto;
+    height: 2.5rem;
+}
+.list-basic >li{
+    float: left;
+}
+.list-basic >li >a{
+    color: #FFFFFF;
+    font-size: 0.95rem;
+    font-family: 新宋体;
+    line-height: 2.5rem;
+    padding: 0 1.3rem;
+    display: inline-block;
+}
+.list-basic >li:hover{
+    background-color: #eb007d;
+}
+/*==========================================================================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 通配符模式,给col-xs-*加上margin */
+[class^="col-xs-"]{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+[id^="nav-detailed-li_"] >a:link{
+	color: #FFF
+}
+[id^="nav-detailed-li_"] >a:visited{
+	color: #FFF
+}
+
+/* 图片懒加载 */
+.demo img {
+    width: auto;
+    height: auto;
+    /* background: url(/wfly/image/public/loading.gif) 50% no-repeat; */
+}
+
+/* 搜索框 */
+.search-div{
+	padding: 7px;
+	padding-right: 20px;
+	background-color: #e6e6e6;
+}
+.search {
+		padding: 1px;
+	}
+@media (min-width: 768px){
+	.search {
+		margin-left:10%;
+		margin-right:30%;
+		background-color: #ff008c;
+		padding: 1px;
+	}
+	.search-div{
+		padding: 7px;
+		padding-right: 20px;
+		background-color: #FFF;
+	}
+}
+.search>input {
+	width: 80%;
+	height: 30px
+}
+.search>a{
+	display: inline-block;
+	width: 15%;
+	text-align:center;
+}
+
+
+/* 导航栏 */
+#detailed{
+    background-color:#ff008c;
+    height:2.5rem;
+}
+.nav-detailed-li{
+    float: left;
+    padding: 0.7rem 2rem;
+    padding-bottom: 0.6rem;
+    color: #FFFFFF;
+}
+#nav-detailed > ul >li:hover{
+    background-color: #db047a;
+}
+
+/* 模板 */
+/* 正文 */
+    .content{position:relative;font-size:14px;line-height:25px;overflow:hidden;text-align:left}
+    .content h3{ margin-top:20px;font-size:16px}
+    .content p{text-indent:2em;margin-top:20px;margin-bottom:20px}
+    .content ul{text-indent:2em}
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2ffcf466-2165-417a-a529-e802eddbe49a" name="wfly" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="E:\java\eWorkspace\wfly\src\main\webapp" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

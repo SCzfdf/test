@@ -1,0 +1,212 @@
+.box-f{
+    min-height: 45rem;
+}
+.logo{
+    width:16rem;
+    height:6rem;
+    margin-top: 2.5rem;
+}
+.search{
+    width: 100%;
+    display: inline-block;
+    margin-top: 3.2rem;
+}
+.search >input{
+    height: 2rem;
+    border: 1px solid #FF008C;
+    width: 75%;
+    font-size: 1rem;
+}
+.search >button{
+    height: 2.1rem;
+    background-color: #FF008C;
+    color: #FFFFFF;
+    border: 0px;
+    width: 20%;
+    font-size: 17px;
+}
+.search >button:hover{
+    box-shadow: 1px 1px 2px 1px #e6e6e6;
+    background-color: #f5008a;
+}
+.search >button:active{
+    box-shadow: 0 0 0 0 ;
+    background-color: #c7006c;
+}
+.search-p >a{
+    font-size: 12px;
+    font-family: '新宋体';
+}
+/*==========================================================================*/
+.box-c2{
+    background-color: #FF008C;
+    margin-top: 2rem;
+}
+.list-basic{
+    width: auto;
+    height: 2.5rem;
+}
+.list-basic >li{
+    float: left;
+}
+.list-basic >li >a{
+    color: #FFFFFF;
+    font-size: 0.95rem;
+    font-family: 新宋体;
+    line-height: 2.5rem;
+    padding: 0 1.3rem;
+    display: inline-block;
+}
+.list-basic >li:hover{
+    background-color: #eb007d;
+}
+/*==========================================================================*/
+@media (min-width: 768px) {
+    .box-c3{
+        min-height: 37rem;
+        background-color: #F9F9F9;
+        padding-top: 0.8rem;
+    }
+}
+.box-c3{
+    min-height: 37rem;
+    background-color: #F9F9F9;
+}
+.inter-box >div{
+    background-color: #FFFFFF;
+    min-height: 25rem;
+}
+@media (min-width: 768px) {
+}
+.context{
+    color: #7a7a7a;
+}
+.context >p{
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+}
+.context >p >span{
+    color: black;
+    font-size: 0.8rem;
+}
+.context-x >p{
+    font-size: 0.8rem;
+}
+.context-x >a{
+    margin-bottom: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 45px;
+    padding-right: 45px;
+    background-color: #FE3989;
+    color: #FFFFFF;
+    display: inline-block;
+    width: auto;
+    font-family: 微软雅黑;
+}
+hr{
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #cccccc;
+    margin: 1rem 0;
+}
+
+
+.box-details{
+    margin: 10px -15px;
+}
+.box-details-content{
+    padding: 2rem;
+}
+.box-details-content >h1{
+    display: inline-block;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    border-bottom: 3px solid #db047a;
+    padding: 0 0.3rem;
+    margin-bottom: 1rem;
+}
+.box-details-content >span{
+    display: inline-block;
+    border: 1px solid #db047a;
+    padding: 1px 10px;
+    letter-spacing: 4px;
+    color: #db047a;
+    margin-right: 1rem;
+}
+.box-details-content >p{
+    letter-spacing: 3px;
+    line-height: 30px;
+}
+/*==========================================================================*/
+#slider-1{width:100%;text-align:center}
+#slider-1 .bd,#slider-1 .bd li,#slider-1 .bd img{width:100%; height:330px}
+#slider-1 .hd{ margin-top:2px;height:58px;width:100%; position: static; padding: 0;}
+#slider-1 .hd li{ position:relative; display:inline-block; cursor:pointer;width:114px; height:58px;}
+#slider-1 .hd li img{ display:block;width:114px; height:58px;}
+#slider-1 .hd li i{ position:absolute; display:block; z-index:9; left:0; top:0; right:0; bottom:0; background-color:rgba(0,0,0,0.6)}
+#slider-1 .hd li.active i{ width:11px; height:6px; background:url(http://lib.h-ui.net/jquery.SuperSlide/2.1.1/demo/01/images/iconpic-arrow-up.png) no-repeat 0 0; top:-6px; left:50%; margin-left:-5px; bottom:auto; right:auto}
+
+.slider{position:relative;text-align:center; margin:0 auto;z-index:1}
+.slider .bd,.slider .bd li,.slider .bd img{width:570px; height:380px}/*请给每个幻灯片套个div并设置id，通过id重置这个地方的宽度，达到自定义效果*/
+.slider .bd{z-index:2;overflow:hidden}
+.slider .bd li{float:left;width: 100%;overflow:hidden; background-position:center; background-repeat:no-repeat}
+.slider .bd li a{ display:block; width: 100%; height: 100%}
+.slider .bd li img{display:block}
+.slider .hd{ position: absolute; z-index: 3; left: 0; right: 0; bottom:10px; padding: 0 10px; text-align: center}
+.slider .hd li{display:inline-block;text-align:center;margin-right:10px;cursor:pointer;background-color:#C2C2C2}
+.slider .hd li.active{background-color:#222}
+/*圆点*/
+.dots li{width:10px; height:10px;font-size:0px;line-height:0px;border-radius:50%}
+/*数字*/
+.numbox li{width:20px; height:20px; line-height:20px; font-size:13px;font-family:Arial;font-weight:bold; text-indent:inherit}
+.numbox li.active{color:#fff}
+/*长方条*/
+.rectangle li{width:40px; height:10px;font-size:0px;line-height:0px}
+
+#slider-3{ width: 570px; height: 380px; overflow: hidden}/*这个是demo页面定义尺寸的样式，请根据自己幻灯片的尺寸重新定义。切莫生搬硬套。*/
+
+
+
+
+/* 选项卡 */
+.clearfix:after{content:"\20";display:block;height:0;clear:both;visibility:hidden}.clearfix{zoom:1}
+.tabBar {border-bottom: 2px solid #FFF;background-color:#F9F9F9}
+.tabBar span {background-color: #F9F9F9;cursor: pointer;display: inline-block;float: left;height: 40px;line-height: 40px;padding: 0 15px;width: auto;text-align: center;border-right: 1px solid #e4e4e4;border-bottom: 1px solid #e4e4e4}
+.tabBar span.current{background-color: #FFF;color: #777574;border-bottom: 0px;}
+.tabCon {display: none}
+
+/* 正文 */
+.content{position:relative;font-size:14px;line-height:25px;overflow:hidden;text-align:left;background-color: #FFFFFF}
+.content h3{ margin-top:20px;font-size:16px}
+.content p{text-indent:2em;margin-top:20px;margin-bottom:20px}
+.content ul{text-indent:2em}
+
+/* 导航栏 */
+#detailed{
+    background-color:#ff008c;
+    height:2.5rem;
+}
+.nav-detailed-li{
+    float: left;
+    padding: 0.7rem 2rem;
+    padding-bottom: 0.6rem;
+    color: #FFFFFF;
+}
+#nav-detailed > ul >li:hover{
+    background-color: #db047a;
+}
+
+/* 选项卡 */
+.tabBar-outerBorder{
+    border:1px solid #e6e6e6;
+}
+#firstTr > td{
+    background-color: #e6e6e6;
+}
+.display_none{
+    display: none;
+}
+.display_block{
+    display: block;
+}

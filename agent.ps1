@@ -1,42 +1,74 @@
-# agent.ps1
-$ErrorActionPreference = "SilentlyContinue"
+$ErrorActionPreference = "Stop"
 
-# 1. 接收参数 (从命令行变量 $u 读取)
-if ([string]::IsNullOrEmpty($u)) { Write-Warning "未检测到订阅链接变量 `$u"; exit }
+# --- 1. 读取订阅链接 ---
+if (-not $env:u) {
+    Write-Warning "未检测到订阅链接变量 `$u"
+    exit
+}
 
-# 2. 初始化目录
+$u = $env:u
+
+# --- 2. 初始化目录 ---
 $Dir = "$env:USERPROFILE\.quick_proxy"
-if (!(Test-Path $Dir)) { md $Dir | Out-Null }
-cd $Dir
+if (!(Test-Path $Dir)) { New-Item -ItemType Directory -Path $Dir | Out-Null }
+Set-Location $Dir
 
-# 3. 极速修复与核心下载 (仅在缺失时运行)
-if (!(Test-Path "sys_node.exe")) {
-    Write-Host "Initializing Environment..." -F DarkGray
-    # 下载核心
-    & curl.exe -L -k -s -f "https://github.moeyy.xyz/https://github.com/MetaCubeX/mihomo/releases/download/v1.18.1/mihomo-windows-amd64-v1.18.1.zip" -o z.zip
-    Expand-Archive z.zip . -Force; del z.zip
-    mv (ls mihomo*.exe).Name sys_node.exe
-    # 补全运行库
-    foreach ($d in "vcruntime140.dll","msvcp140.dll") { 
-        if (!(Test-Path $d)) { & curl.exe -L -k -s -f "https://github.moeyy.xyz/https://github.com/MetaCubeX/mihomo/releases/download/v1.18.1/$d" -o $d } 
+# --- 3. 下载核心程序和依赖 ---
+$exePath = "$Dir\sys_node.exe"
+if (!(Test-Path $exePath)) {
+    Write-Host "Downloading core program..." -ForegroundColor DarkGray
+
+    # 下载 ZIP
+    $zipUrl = "https://github.com/MetaCubeX/mihomo/releases/download/v1.18.1/mihomo-windows-amd64-v1.18.1.zip"
+    $zipFile = "$Dir\sys_node.zip"
+    Invoke-WebRequest -Uri $zipUrl -OutFile $zipFile -UseBasicParsing
+
+    Expand-Archive $zipFile -DestinationPath $Dir -Force
+    Remove-Item $zipFile
+
+    # 重命名 exe
+    $exe = Get-ChildItem $Dir -Filter "mihomo*.exe" | Select-Object -First 1
+    if ($exe) { Rename-Item $exe.FullName "sys_node.exe" }
+
+    # 下载必要 DLL
+    $dlls = @("vcruntime140.dll","msvcp140.dll")
+    foreach ($dll in $dlls) {
+        if (!(Test-Path "$Dir\$dll")) {
+            $dllUrl = "https://github.com/MetaCubeX/mihomo/releases/download/v1.18.1/$dll"
+            Invoke-WebRequest -Uri $dllUrl -OutFile "$Dir\$dll" -UseBasicParsing
+        }
     }
 }
-# 解除文件锁定 (关键)
-ls | Unblock-File
 
-# 4. 生成配置 (使用 API 转换)
+# --- 4. 解除锁定 ---
+Get-ChildItem $Dir | Unblock-File
+
+# --- 5. 生成配置 ---
 $Api = "https://api.v1.mk/sub?target=clash&insert=false&config=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini.ini&url=$u"
-& curl.exe -L -k -s -f $Api -o config.yaml
+Invoke-WebRequest -Uri $Api -OutFile "$Dir\config.yaml" -UseBasicParsing
 
-# 5. 进程守护 (防重复启动)
-kill -Name sys_node -Force
+# --- 6. 停止旧进程 ---
+$proc = Get-Process sys_node -ErrorAction SilentlyContinue
+if ($proc) { $proc | Stop-Process -Force }
 
-# 6. 隐身启动
-Start-Process ".\sys_node.exe" "-f config.yaml" -WindowStyle Hidden
+# --- 7. 启动代理 ---
+try {
+    $startInfo = Start-Process -FilePath $exePath -ArgumentList "-f config.yaml" -WindowStyle Hidden -PassThru
+    Start-Sleep -Seconds 2
 
-# 7. 接管系统代理
-$Reg = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-Set-ItemProperty $Reg ProxyEnable 1
-Set-ItemProperty $Reg ProxyServer "127.0.0.1:7890"
+    # 确认进程已启动
+    if (-not (Get-Process sys_node -ErrorAction SilentlyContinue)) {
+        throw "sys_node.exe 启动失败"
+    }
 
-Write-Host "Proxy Online." -F Green
+    # --- 8. 接管系统代理 ---
+    $Reg = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+    Set-ItemProperty $Reg ProxyEnable 1
+    Set-ItemProperty $Reg ProxyServer "127.0.0.1:7890"
+
+    Write-Host "Proxy Online." -ForegroundColor Green
+}
+catch {
+    Write-Warning $_
+    Write-Host "代理启动失败，未修改系统代理。" -ForegroundColor Red
+}
